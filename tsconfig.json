@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "noEmit": true,
+    "noEmitOnError": true,
+    "noErrorTruncation": true,
+    "outDir": "build",
+    "preserveWatchOutput": true,
     "skipLibCheck": true,
+    "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
 
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "NodeNext",
     "resolveJsonModule": true,
-    "types": ["@remix-run/node", "vite/client"],
+    "types": ["node"],
 
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -17,17 +20,9 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
 
-    "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "lib": ["ES2022"],
     "moduleDetection": "force",
-    "target": "ES2022",
+    "target": "ES2022"
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/.server/**/*.ts",
-    "**/.server/**/*.tsx",
-    "**/.client/**/*.ts",
-    "**/.client/**/*.tsx"
-  ],
+  "include": ["src/**/*.ts"],
 }
