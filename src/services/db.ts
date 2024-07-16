@@ -5,21 +5,21 @@ import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import { links } from "../schemas/links.js";
 
 export let db: ReturnType<
-  typeof drizzle<{
-    links: typeof links;
-  }>
+	typeof drizzle<{
+		links: typeof links;
+	}>
 >;
 
 export function initialiseDatabase() {
-  const sqlite = new Database("db.sqlite");
-  db = drizzle(sqlite, {
-    logger: true,
-    schema: {
-      links,
-    },
-  });
+	const sqlite = new Database("db.sqlite");
+	db = drizzle(sqlite, {
+		logger: true,
+		schema: {
+			links,
+		},
+	});
 
-  migrate(db, {
-    migrationsFolder: "./migrations",
-  });
+	migrate(db, {
+		migrationsFolder: "./migrations",
+	});
 }
