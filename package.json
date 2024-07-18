@@ -9,9 +9,12 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "dev:tsc": "tsc --watch",
+    "dev:node": "node --watch ./build/index.js",
+    "dev": "pnpm run /^dev:.*/",
     "build": "tsc",
-    "build:watch": "tsc --watch",
-    "dev": "node --watch ./build/index.js",
+    "build:clean": "rm -rf ./build",
+    "start": "node ./build/index.js",
     "db:dev": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
