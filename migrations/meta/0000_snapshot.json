@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "17f51936-62bc-4d3f-b3f1-c328f5905673",
+  "id": "c906edba-6ee9-40d7-bc68-365e3a04e8e1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "links": {
@@ -21,8 +21,16 @@
           "notNull": true,
           "autoincrement": false
         },
-        "timestamp": {
-          "name": "timestamp",
+        "created": {
+          "name": "created",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(current_timestamp)"
+        },
+        "updated": {
+          "name": "updated",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
