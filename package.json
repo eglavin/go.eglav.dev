@@ -27,6 +27,7 @@
     "fastify": "^4.28.1",
     "fastify-plugin": "^4.5.1",
     "isbot": "^4.1.0",
+    "pino-pretty": "^11.2.1",
     "sqids": "^0.3.0",
     "zod": "^3.23.8"
   },

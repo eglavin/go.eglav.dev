@@ -7,7 +7,15 @@ import { middleware } from "./services/middleware.js";
 
 async function createService() {
 	const service = Fastify({
-		logger: true,
+		logger: {
+			transport: {
+				target: "pino-pretty",
+				options: {
+					translateTime: "yyyy-mm-dd HH:MM:ss Z",
+					ignore: "pid,hostname",
+				},
+			},
+		},
 	});
 
 	initialiseDatabase();
