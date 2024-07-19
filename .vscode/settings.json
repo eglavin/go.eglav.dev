@@ -2,4 +2,7 @@
 	"[typescript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
+	"yaml.schemas": {
+		"https://raw.githubusercontent.com/aws/serverless-application-model/main/samtranslator/schema/schema.json": "file:///home/eanna/projects/go.eglav.dev/template.yaml"
+	},
 }

@@ -5,34 +5,35 @@ import { LinkRoutes } from "./routes/link.js";
 import { initialiseDatabase } from "./services/db.js";
 import { middleware } from "./services/middleware.js";
 
-async function createService() {
-	const service = Fastify({
-		logger: {
-			transport: {
-				target: "pino-pretty",
-				options: {
-					translateTime: "yyyy-mm-dd HH:MM:ss Z",
-					ignore: "pid,hostname",
-				},
+const app = Fastify({
+	logger: {
+		transport: {
+			target: "pino-pretty",
+			options: {
+				translateTime: "yyyy-mm-dd HH:MM:ss Z",
+				ignore: "pid,hostname",
 			},
 		},
-	});
+	},
+});
 
-	initialiseDatabase();
-	service.register(middleware);
+initialiseDatabase();
+app.register(middleware);
 
-	service.register(IndexRoutes);
-	service.register(LinkRoutes);
+app.register(IndexRoutes);
+app.register(LinkRoutes);
 
-	try {
-		await service.listen({
+// Only start the server if this file is the entrypoint.
+if (import.meta.url.endsWith(process.argv[1])) {
+	app
+		.listen({
 			host: "0.0.0.0",
 			port: 3000,
+		})
+		.catch((err) => {
+			app.log.error(err);
+			process.exit(1);
 		});
-	} catch (err) {
-		service.log.error(err);
-		process.exit(1);
-	}
 }
 
-createService();
+export default app;
